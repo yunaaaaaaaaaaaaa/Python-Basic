@@ -72,13 +72,32 @@
 # Just using them in calculation doesn't change the original variable's data type
 # To change the original variable's data type, save it back into the variable [ex. a = int(a)]
 
-var1 = 2
-var2 = '31'
-result = var1 + int(var2)   # saves var1 + var2 converted to int in result
-print(result)
-print(type(var2))           # prints the  data type of var2, which is still str
-var2 = int(var2)            # converts var2 to int and saves it back in var2
-print(type(var2))           #prints thenew data type of var2
+# var1 = 2
+# var2 = '31'
+# result = var1 + int(var2)   # saves var1 + var2 converted to int in result
+# print(result)
+# print(type(var2))           # prints the  data type of var2, which is still str
+# var2 = int(var2)            # converts var2 to int and saves it back in var2
+# print(type(var2))           #prints thenew data type of var2
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+
+# input('text' or value or variable)
+# Displays 'text' or the value of the variable, then waits for keyboard input until Enter is pressed
+# 'text' or variable can be left out
+# variable = input('text' or variable)
+# Usually used in this format, without variable the input value is not saved
+# input() always saves the value as a str data type
+
+var1 = 2
+var2 = input("Insert anything: ")
+print(var2)
+print(type(var2))
+
+var2 = int(var2)
+print(type(var2))
+
+sum = var1 + var2
+print(sum)

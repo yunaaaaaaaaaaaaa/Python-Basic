@@ -5,7 +5,7 @@
 # https://docs.streamlit.io/
 import streamlit as st
 
-st.title("YISS Coding _Girls_ is :blue[cool]  :sunglasses:")
+st.title("The Code Breaker's adventure :sunglasses:")
 import streamlit as st
 
 story = """
@@ -41,3 +41,7 @@ And no teacher, no matter how evil, could ever break their bond.
 """
 
 st.write(story)
+
+
+name = st.text_input("Enter your name")
+st.write(name)
