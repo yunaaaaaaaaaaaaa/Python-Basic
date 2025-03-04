@@ -35,7 +35,7 @@
 # The print() function prints the 'text', number, or value of 
 # the variable inside the bracket and then adds a newline.
 # To print multiple items, use a comma (,)
-# If you use print() with nothing inside, ir prints an empty line
+# If you use print() with nothing inside, it prints an empty line
 
 # name = 'Yuna'
 # age = 12
@@ -81,7 +81,7 @@
 # print(type(var2))           #prints thenew data type of var2
 
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 
 # input('text' or value or variable)
@@ -91,13 +91,36 @@
 # Usually used in this format, without variable the input value is not saved
 # input() always saves the value as a str data type
 
-var1 = 2
-var2 = input("Insert anything: ")
-print(var2)
-print(type(var2))
+# var1 = 2
+# var2 = input("Insert anything: ")
+# print(var2)
+# print(type(var2))
 
-var2 = int(var2)
-print(type(var2))
+# var2 = int(var2)
+# print(type(var2))
 
-sum = var1 + var2
-print(sum)
+# sum = var1 + var2
+# print(sum)
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+# print("Hello. Enter your name.")
+# name = input()          # I didn't put the input thing in a variable because 
+#                         # I didn't know that just putting the input thing wouldn't let me type or do anything else
+# print("Welcome.", name,", Enter your age.")
+# age = input()
+# age = int(age)          # Convert to int
+# year = 2025 - age
+
+# print("You were born in", year, "! Enter your height")
+# height = int(input())   # Convert to an int as soon as get the input
+
+# two_m = 200 - height 
+# print("There are", two_m, "cm left until 2m.")
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
