@@ -25,7 +25,7 @@
 
 # name = 'Yuna'
 # age = 12
-# height = 147
+# height = 150
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -39,7 +39,7 @@
 
 # name = 'Yuna'
 # age = 12
-# height = 147
+# height = 150
 # print(name)
 # print() # prints an empty line
 # print(age)
