@@ -40,14 +40,49 @@ html_code = f"""
 <html>
 <head>
   <style>
-    /* your CSS */
+    .container {{
+      position: relative;
+      display: inline-block;
+    }}
+    .clickable-area {{
+      position: absolute;
+      border: 2px solid red;
+      cursor: pointer;
+    }}
+    #start-box {{
+      top: 270px;
+      left: 35px;
+      width: 150px;
+      height: 50px;
+    }}
+    .box1 {{
+      top: 289px;
+      left: 45px;
+      width: 130px;
+      height: 45px;
+    }}
+    .box2 {{
+      top: 288px;
+      left: 220px;
+      width: 130px;
+      height: 45px;
+    }}
+    .box3 {{
+      top: 287px;
+      left: 408px;
+      width: 130px;
+      height: 45px;
+    }}
   </style>
 </head>
 <body>
   <div class="container">
     <img id="game-image" src="data:image/jpeg;base64,{images[0]}" width="600" alt="Game Image">
 
+    <!-- Start box for 1.png -->
     <div class="clickable-area" id="start-box" onclick="nextImage()"></div>
+
+    <!-- Choice boxes for 2.png to 7.png -->
     <div class="clickable-area box1" id="choice1" onclick="nextImage()" style="display:none;"></div>
     <div class="clickable-area box2" id="choice2" onclick="nextImage()" style="display:none;"></div>
     <div class="clickable-area box3" id="choice3" onclick="nextImage()" style="display:none;"></div>
@@ -55,12 +90,13 @@ html_code = f"""
 
   <script>
     const images = {images};
-    const endingImage = `{ending_image}`;  // <-- Use backticks here
+    const endingImage = `{"ending.png"}`;
     let currentIndex = 0;
     let isEnding = false;
 
     function nextImage() {{
       if (isEnding) {{
+        // Do nothing if ending image is shown
         return;
       }}
 
@@ -69,18 +105,28 @@ html_code = f"""
         document.getElementById("game-image").src = "data:image/jpeg;base64," + images[currentIndex];
 
         if (currentIndex === 1) {{
+          // From 1.png to 2.png
           document.getElementById("start-box").style.display = "none";
         }}
 
+        // Show choices for 2.png to 7.png
         if (currentIndex >= 1 && currentIndex <= 6) {{
           document.getElementById("choice1").style.display = "block";
           document.getElementById("choice2").style.display = "block";
           document.getElementById("choice3").style.display = "block";
         }}
+
+        // When on last interactive image (7.png at index 6), next click shows ending
+        if (currentIndex === 6) {{
+          // Next click on clickable areas changes to ending image
+          // So don't hide clickable areas here; handle in next click
+        }}
       }} else if (currentIndex === images.length - 1) {{
+        // Currently on 7.png, next click -> show ending.png
         document.getElementById("game-image").src = "data:image/jpeg;base64," + endingImage;
         isEnding = true;
 
+        // Hide clickable areas on ending image
         document.getElementById("choice1").style.display = "none";
         document.getElementById("choice2").style.display = "none";
         document.getElementById("choice3").style.display = "none";
