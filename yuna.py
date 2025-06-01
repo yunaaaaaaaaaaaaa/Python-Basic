@@ -5,7 +5,6 @@
 # https://docs.streamlit.io/
 
 
-
 import streamlit as st
 import base64
 
@@ -35,6 +34,7 @@ encoded_image_8 = get_base64_image("ending.png")
 # Create a list of base64-encoded images from 1.png to 7.png
 images = [get_base64_image(f"{i}.png") for i in range(1, 8)]
 
+
 html_code = f"""
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,6 @@ html_code = f"""
     }}
     .clickable-area {{
       position: absolute;
-      border: 2px solid red;
       cursor: pointer;
     }}
     #start-box {{
@@ -89,50 +88,38 @@ html_code = f"""
   </div>
 
   <script>
-    const images = {images};
-    const endingImage = `{"ending.png"}`;
-    let currentIndex = 0;
-    let isEnding = false;
+  const images = {images};
+  const endingImage = "data:image/png;base64,{encoded_image_8}";
+  let currentIndex = 0;
+  let isEnding = false;
 
-    function nextImage() {{
-      if (isEnding) {{
-        // Do nothing if ending image is shown
-        return;
-      }}
-
-      if (currentIndex < images.length - 1) {{
-        currentIndex += 1;
-        document.getElementById("game-image").src = "data:image/jpeg;base64," + images[currentIndex];
-
-        if (currentIndex === 1) {{
-          // From 1.png to 2.png
-          document.getElementById("start-box").style.display = "none";
-        }}
-
-        // Show choices for 2.png to 7.png
-        if (currentIndex >= 1 && currentIndex <= 6) {{
-          document.getElementById("choice1").style.display = "block";
-          document.getElementById("choice2").style.display = "block";
-          document.getElementById("choice3").style.display = "block";
-        }}
-
-        // When on last interactive image (7.png at index 6), next click shows ending
-        if (currentIndex === 6) {{
-          // Next click on clickable areas changes to ending image
-          // So don't hide clickable areas here; handle in next click
-        }}
-      }} else if (currentIndex === images.length - 1) {{
-        // Currently on 7.png, next click -> show ending.png
-        document.getElementById("game-image").src = "data:image/jpeg;base64," + endingImage;
-        isEnding = true;
-
-        // Hide clickable areas on ending image
-        document.getElementById("choice1").style.display = "none";
-        document.getElementById("choice2").style.display = "none";
-        document.getElementById("choice3").style.display = "none";
-      }}
+  function nextImage() {{
+    if (isEnding) {{
+      return;
     }}
-  </script>
+
+    if (currentIndex < images.length - 1) {{
+      currentIndex += 1;
+      document.getElementById("game-image").src = "data:image/jpeg;base64," + images[currentIndex];
+
+      if (currentIndex === 1) {{
+        document.getElementById("start-box").style.display = "none";
+      }}
+      if (currentIndex >= 1 && currentIndex <= 6) {{
+        document.getElementById("choice1").style.display = "block";
+        document.getElementById("choice2").style.display = "block";
+        document.getElementById("choice3").style.display = "block";
+      }}
+    }} else if (currentIndex === images.length - 1) {{
+      document.getElementById("game-image").src = endingImage;
+      isEnding = true;
+      document.getElementById("choice1").style.display = "none";
+      document.getElementById("choice2").style.display = "none";
+      document.getElementById("choice3").style.display = "none";
+    }}
+  }}
+</script>
+
 </body>
 </html>
 """
